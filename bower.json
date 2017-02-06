@@ -1,5 +1,6 @@
 {
   "name": "gist-element",
+  "version": "0.0.1",
   "description": "display a gist with given id",
   "main": "gist-element.html",
   "dependencies": {
