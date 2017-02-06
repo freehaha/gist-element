@@ -1,0 +1,57 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="../gh3/gh3.js"></script>
+<script src="../jquery/dist/jquery.min.js"></script>
+
+<!--
+`gist-element`
+display a gist with given id
+
+@demo demo/index.html 
+-->
+
+<dom-module id="gist-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h4>First file in [[gistId]]</h4>
+    <div>
+      <pre>
+        [[textContent]]
+      </pre>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'gist-element',
+      properties: {
+        gistId: {
+          type: String,
+          value: '97dcf583f80217c864223308c4c4a242',
+        },
+        textContent: {
+          type: String,
+          notify: true,
+        }
+      },
+      ready: function() {
+        console.log(Gh3);
+        console.log(this.gistId);
+        this.textContent = 'loading...';
+        var gist = new Gh3.Gist({id: this.gistId});
+        var self = this;
+        gist.fetchContents(function(err, res) {
+          if(err) {
+            console.error(err);
+            return;
+          }
+          console.log(res);
+          self.textContent = res.files[0].content;
+        });
+      }
+    });
+  </script>
+</dom-module>

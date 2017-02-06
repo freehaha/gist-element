@@ -1,0 +1,14 @@
+{
+  "name": "gist-element",
+  "version": "1.0.0",
+  "description": "display a gist with given id",
+  "main": "gist-element.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
